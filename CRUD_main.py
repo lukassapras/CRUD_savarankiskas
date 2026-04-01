@@ -1,4 +1,4 @@
-from sarasas_CRUD import *
+from failo_CRUD import *
 
 while True:
     print_info()
