@@ -1,21 +1,17 @@
-from demo_data import load_films
 from sarasas_CRUD import *
-
-films = load_films()
-id_counter = 3
 
 while True:
     print_info()
     pasirinkimas = input()
     match pasirinkimas:
         case '1':
-            print_films(films)
+            print_films()
         case '2':
-            id_counter = create_film(films, id_counter)
+            create_film()
         case '3':
-            edit_film(films)
+            edit_film()
         case '4':
-            delete_film(films)
+            delete_film()
         case '5':
             print('GEROS KLOTIES')
             break

@@ -1,3 +1,5 @@
+from demo_data import load_films
+films = load_films()
 def print_info():
     print('-----------------------------------------------------------------------')
     print('1. Atvaizduoti filmu pasirinkimus')
@@ -7,11 +9,11 @@ def print_info():
     print('5. Iseiti is programos')
     print('-----------------------------Pasirinkite--------------------------------')
 
-def print_films(films):
+def print_films():
     for flm in films:
         print(f'{flm['id']}. Filmas \"{flm['title']}\", kuri sukure {flm['director']} ir isleido {flm['release_year']} metais')
 
-def create_film(films, id_counter):
+def create_film():
     print('Filmu itraukimas')
     print('iveskite pavadinima')
     title = input()
@@ -19,7 +21,7 @@ def create_film(films, id_counter):
     director = input()
     print('iveskite isleidimo metus')
     release_year = int(input())
-    id_counter += 1
+    id_counter = int(films[-1]['id']) + 1 if len(films) > 0 else 1
     flm = {
         'id': id_counter,
         'title': title,
@@ -30,14 +32,13 @@ def create_film(films, id_counter):
     films.append(flm)
     return id_counter
 
-def edit_film(films):
+def edit_film():
     print('Filmu redagavimas')
     print('iveskite filmo id, kuri norite redaguoti')
     edit_id = input()
     for flm in films:
         if edit_id == str(flm['id']):
-            print(
-                f'{flm['id']}. Redaguojama: \"{flm['title']}\", filmo autorius {flm['director']}, isleidimo metai: {flm['release_year']}')
+            print(f'{flm['id']}. Redaguojama: \"{flm['title']}\", filmo autorius {flm['director']}, isleidimo metai: {flm['release_year']}')
             print('iveskite filmo pavadinima')
             flm['title'] = input()
             print('iveskite filmo autoriu')
@@ -48,7 +49,7 @@ def edit_film(films):
 
             break
 
-def delete_film(films):
+def delete_film():
     print('Filmu pasalinimas')
     print('iveskite filmo id, kuri norite pasalinti')
     del_id = input()
