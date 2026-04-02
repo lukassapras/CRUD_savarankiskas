@@ -1,7 +1,7 @@
 import mysql.connector
 
 DB_CONFIG = {
-    'host':'localhost', #127.0.0.1 alternatyva rasymui "localhost" ;)
+    'host':'localhost',
     'port': 3306,
     'user':'root',
     'password':"Root123.",
@@ -56,6 +56,7 @@ def create_film():
     conn.commit()
     cur.close()
     conn.close()
+    print(f'Itraukta: \"{title}\", filmo autorius {director}, isleidimo metai: {release_year}')
 
 def edit_film():
     print('Filmu redagavimas')
@@ -82,7 +83,7 @@ def edit_film():
         conn.commit()
         cur.close()
         conn.close()
-        print(f'{row[0]}. Pakeista i: \"{row[1]}\", filmo autorius {row[2]}, isleidimo metai: {row[3]}')
+        print(f'Pakeista i: \"{title}\", filmo autorius {director}, isleidimo metai: {release_year}')
     else:
         print('tokio iraso nera')
 
